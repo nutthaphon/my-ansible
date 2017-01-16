@@ -1,0 +1,11 @@
+[Unit]
+Description=Jboss Application Server
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/jboss start
+ExecStop=/etc/init.d/jboss stop
+
+[Install]
+WantedBy=multi-user.target
