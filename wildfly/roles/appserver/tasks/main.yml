@@ -30,6 +30,12 @@
   
 - name: Copy the init script
   copy: src=wildfly-init-redhat.sh dest=/etc/init.d/jboss mode=0755
+
+- name: Copy JBoss service file
+  copy: src=jboss.service dest=/etc/systemd/system/jboss.service
+
+- name: Reload Systemd 
+  command: /usr/bin/systemctl daemon-reload
   
 - name: Enable WildFly to be started at boot
   service: name=jboss enabled=yes state=started
