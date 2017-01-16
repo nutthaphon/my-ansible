@@ -1,0 +1,4 @@
+---
+- hosts: wildflyservers
+  roles:
+  - role: appserver
