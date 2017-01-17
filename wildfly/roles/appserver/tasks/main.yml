@@ -36,6 +36,7 @@
 
 - name: Reload Systemd 
   command: /usr/bin/systemctl daemon-reload
-  
+
+
 - name: Enable WildFly to be started at boot
   service: name=jboss enabled=yes state=started
