@@ -1,6 +1,6 @@
 ---
 # Testing
-- hosts: myhome
+- hosts: mypc
 - tasks:
     - name: test connection
       ping:
