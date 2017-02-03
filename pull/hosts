@@ -1,0 +1,2 @@
+[pull_mode_hosts]
+rhel2 ansible_host=192.168.122.105 ansible_connection=ssh ansible_user=root
