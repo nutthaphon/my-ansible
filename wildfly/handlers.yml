@@ -1,0 +1,10 @@
+---
+- name: restart memcached
+  service: name=memcached state=restarted
+  listen: "restart web services"
+  ignore_errors: True
+      
+- name: restart apache
+  service: name=apache state=restarted
+  listen: "restart web services"
+  ignore_errors: True

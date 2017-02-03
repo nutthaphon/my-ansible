@@ -1,4 +1,6 @@
 ---
+- include: rhsm.yml
+
 - name: Install Java 1.8 and some basic dependencies
   yum: name={{item}} state=present
   with_items:

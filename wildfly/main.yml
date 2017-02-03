@@ -1,0 +1,51 @@
+---
+- hosts: rhel2
+  remote_user: root
+  vars:
+    vhost: redhatserver
+  tasks:
+  
+    - name: test connection
+      ping:
+      remote_user: root
+      tags: connect
+      
+    - name: make sure apache is running
+      service: name=httpd state=started
+      ignore_errors: True
+    
+    - name: Get Date/Time
+      shell: /usr/bin/date
+    
+    - name: Copy ansible inventory file to client
+      copy: src=/etc/ansible/hosts dest=/tmp/hosts
+            owner=root group=root mode=0644
+    
+    - name: create a virtual host file for {{ vhost }}
+      template: src=somefile.j2 dest=/etc/httpd/conf.d/{{ vhost }}
+      ignore_errors: True
+      tags: services
+    
+    - name: restart everything
+      command: echo "this task will restart the web services"
+      notify: "restart web services"
+      tags: services
+#    - name: template configuration file
+#      template: src=/etc/ansible/hosts dest=/tmp/hosts4
+#      notify:
+#         - restart memcached
+#         - restart apache
+    
+#    - meta: flush_handlers
+    
+    - name: ping all hosts
+      ping:
+      ignore_errors: True
+      tags: connect
+      
+  handlers:
+  
+    - include: handlers.yml
+      
+      
+    

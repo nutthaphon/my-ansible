@@ -1,0 +1,13 @@
+- name: Redhat Subscription
+  redhat_subscription:
+    state: present
+    username: nutthaphon@gmail.com
+    password: IaMaMan@3721
+    autosubscribe: true
+- name: Enable Repository
+  redhat_repositories:
+    name:
+      rhel-7-server-rpms
+      rhel-7-server-optional-rpms
+      rhel-7-server-extras-rpms
+    state: enabled
