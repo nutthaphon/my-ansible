@@ -1,2 +1,10 @@
 ---
 # Testing
+- hosts: localhost
+- tasks:
+    - name: test connection
+      ping:
+      remote_user: root
+      tags: connect
+    - name: Get Date/Time
+      shell: /usr/bin/date
